@@ -15,7 +15,7 @@ func main() {
 		name := path.Base(os.Args[0])
 		fmt.Printf("%s is a tool for creating DSA DSLink project skeletons\n\n", name)
 		fmt.Printf("Usage:\n\n\t%s <packageName> <nodeName>\n\n", name)
-		fmt.Printf("Arguements:\n\n")
+		fmt.Printf("Arguments:\n\n")
 		fmt.Println("\tpackageName\tThis will be appended to the dslink name such as: dslink_packageName")
 		fmt.Println("\tnodeName\tDefault node name for the link within DGLux.")
 		fmt.Println("")
