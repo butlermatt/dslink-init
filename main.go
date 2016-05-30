@@ -14,10 +14,10 @@ func main() {
 	if len(os.Args) != 3 {
 		name := path.Base(os.Args[0])
 		fmt.Printf("%s is a tool for creating DSA DSLink project skeletons\n\n", name)
-		fmt.Printf("Usage:\n\n\t%s <package name> <node name>\n\n", name)
+		fmt.Printf("Usage:\n\n\t%s <packageName> <nodeName>\n\n", name)
 		fmt.Printf("Arguements:\n\n")
-		fmt.Println("\tpackage name\tThis will be appended to the dslink name such as: dslink-myPackage")
-		fmt.Println("\tnode name\tDefault node name for the link within DGLux.")
+		fmt.Println("\tpackageName\tThis will be appended to the dslink name such as: dslink_packageName")
+		fmt.Println("\tnodeName\tDefault node name for the link within DGLux.")
 		fmt.Println("")
 		os.Exit(1)
 	}
