@@ -25,25 +25,25 @@ func main() {
 	pName := strings.TrimSpace(os.Args[1])
 	nName := strings.TrimSpace(os.Args[2])
 
-	createFile("README.md", templates.README, pName, nName)
-	createFile("dslink.json", templates.DSLinkJSON, pName, nName)
-	createFile("pubspec.yaml", templates.PubSpec, pName, nName)
+	mkFile("README.md", templates.README, pName, nName)
+	mkFile("dslink.json", templates.DSLinkJSON, pName, nName)
+	mkFile("pubspec.yaml", templates.PubSpec, pName, nName)
 
-	createUseDirectory("bin")
-	createFile("run.dart", templates.DartRun, pName, nName)
+	mkChDir("bin")
+	mkFile("run.dart", templates.DartRun, pName, nName)
 
-	createUseDirectory("..")
+	mkChDir("..")
 
-	createUseDirectory("lib")
-	createFile(strings.ToLower(pName+".dart"), "", pName, nName)
-	createFile("models.dart", "", pName, nName)
-	createUseDirectory("src")
-	createUseDirectory("models")
-	createUseDirectory("..")
-	createUseDirectory("nodes")
+	mkChDir("lib")
+	mkFile(strings.ToLower(pName+".dart"), "", pName, nName)
+	mkFile("models.dart", "", pName, nName)
+	mkChDir("src")
+	mkChDir("models")
+	mkChDir("..")
+	mkChDir("nodes")
 }
 
-func createUseDirectory(directory string) {
+func mkChDir(directory string) {
 	if directory != ".." {
 		log.Println("Creating directory:", directory)
 		err := os.Mkdir(directory, 0755)
@@ -65,7 +65,7 @@ func createUseDirectory(directory string) {
 	log.Println("Done")
 }
 
-func createFile(filename, template, pName, nName string) {
+func mkFile(filename, template, pName, nName string) {
 	log.Println("Creating file: ", filename)
 	file, err := os.Create(filename)
 	if err != nil {
