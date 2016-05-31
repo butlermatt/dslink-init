@@ -71,6 +71,13 @@ func mkFile(filename, template, pName, nName string) {
 	if err != nil {
 		log.Fatal(err)
 	}
+	defer func() {
+		err = file.Close()
+		if err != nil {
+			log.Fatal(err)
+		}
+	}()
+
 	if template != "" {
 		_, err = fmt.Fprintf(file, template, pName, nName)
 		if err != nil {
@@ -79,11 +86,8 @@ func mkFile(filename, template, pName, nName string) {
 	}
 	err = file.Chmod(0644)
 	if err != nil {
-		log.Fatal(err)
+		log.Println(err)
 	}
-	err = file.Close()
-	if err != nil {
-		log.Fatal(err)
-	}
+
 	log.Println("Done!")
 }
